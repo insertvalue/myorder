@@ -1,11 +1,11 @@
 <% include ../header %>
 <%if(result){%>
-<div class="alert alert-success">冲值成功</div>
+<div class="alert alert-success">充值成功</div>
 <%}%>
 <h2>为【<%=user.name%>】充值</h2>
 <p>当前账户余额：￥<%=parseFloat(user.balance||0).toFixed(2)%>元</p>
 <br>
-<form action="" method="post">
+<form method="post">
   <input type="hidden" name="user_id" value="<%=user._id%>">
   <input type="hidden" name="amount" value="50">
   <span class="btn btn-primary" data-amount="50">充值￥50 元</span>

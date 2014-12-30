@@ -201,10 +201,22 @@ exports.submit_pay = function (req, res) {
 //每日订单统计
 exports.getOrderByDay = function (req, res) {
     var now = new Date();
-    var endTime = dateFormat(now, "yyyy-mm-dd 23:59:59")
+    var endTime = dateFormat(now, "yyyy-mm-dd 23:59:59");
     now.setDate(now.getDate() - 7);
-    var startTime = dateFormat(now, "yyyy-mm-dd 00:00:00")
+    var startTime = dateFormat(now, "yyyy-mm-dd 00:00:00");
     Order.groupOrderByTime("day", startTime, endTime, function (err, docs) {
         res.send(docs);
     })
+};
+
+//今日订餐的用户
+
+exports.ordered_user = function (req, res) {
+    var date = req.query.date;
+    var now = new Date(date);
+    var endTime = dateFormat(now, "yyyy-mm-dd 23:59:59");
+    var startTime = dateFormat(now, "yyyy-mm-dd 00:00:00");
+    Order.getOrdersByQuery({time: {"$gt": startTime, "$lt": endTime}}, function (err, docs) {
+        res.send(docs);
+    });
 };

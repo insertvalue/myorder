@@ -45,3 +45,10 @@ Order.aggregate(
         }
         console.log(docs);
     })
+
+var now = new Date();
+var endTime = dateFormat(now, "yyyy-mm-dd 23:59:59");
+var startTime = dateFormat(now, "yyyy-mm-dd 22:00:00");
+Order.find({time: {"$gt": startTime, "$lt": endTime}}, function (err, docs) {
+    console.log(docs);
+});

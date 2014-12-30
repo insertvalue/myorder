@@ -37,6 +37,7 @@ router.get('/pay/item', site.auth, order.pay_item);
 router.get('/pay/submit_pay', site.auth, order.submit_pay);
 router.post('/pay/submit_pay', site.auth, order.submit_pay);
 router.get('/today', site.auth, order.today);
+router.get('/today/ordered_user', site.auth, order.ordered_user);
 
 //***********后台管理***********//
 router.get('/admin', site.auth, admin.index);

@@ -74,11 +74,9 @@
         },
         success: function(data){
           if(data){
-            that.prev().text("true");
-            that.text("撤销")
+            that.removeClass('btn-primary').addClass('btn-warning').text("撤销超级管理");
           }else{
-            that.prev().text("false");
-            that.text("授予");
+            that.removeClass('btn-warning').addClass('btn-primary').text("授予超级管理");
           }
         }
       })
@@ -96,11 +94,9 @@
         },
         success: function(data){
           if(data){
-            that.prev().text("true");
-            that.text("撤销")
+            that.removeClass('btn-primary').addClass('btn-warning').text("撤销店铺管理");
           }else{
-            that.prev().text("false");
-            that.text("授予");
+            that.removeClass('btn-warning').addClass('btn-primary').text("授予店铺管理");
           }
         }
       })

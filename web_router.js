@@ -63,6 +63,9 @@ router.get('/admin/user/balance', site.auth, admin.auth_super_admin, admin.balan
 router.get('/admin/user/delete/:id', site.auth, admin.auth_super_admin, admin.user_delete);
 router.get('/admin/user/isAdmin/:id', site.auth, admin.auth_super_admin, admin.user_isAdmin);
 router.get('/admin/user/canOperateShop/:id', site.auth, admin.auth_super_admin, admin.user_operateShop);
+//统计报表
+router.get('/admin/statis', site.auth, admin.statis);
+
 //404 hadle
 router.get('*', site.pageNotFound);
 

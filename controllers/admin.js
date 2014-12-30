@@ -248,7 +248,7 @@ exports.user_add_balance = function (req, res) {
 
                     User.updateUserBalance(user_id, balance_log.balance, function (err, user) {
                         if (!err) {
-                            res.redirect('admin/user/add_balance?result=success&user_id=' + user_id);
+                            res.redirect('/admin/user/add_balance?result=success&user_id=' + user_id);
                         } else {
                             next();
                         }
@@ -295,7 +295,8 @@ exports.user_isAdmin = function (req, res) {
 //更新用户是否能操作店铺
 exports.user_operateShop = function (req, res) {
     var id = req.params.id;
-    db.user.findOne({"_id": db.ObjectID.createFromHexString(id)}, function (err, user) {
+
+    User.getUserById(id, function (err, user) {
         if (user.canOperateShop) {
             user.canOperateShop = false;
         } else {
@@ -324,4 +325,9 @@ exports.food_delete = function (req, res) {
 //显示美食列表
 exports.food_index = function (req, res) {
     res.render("admin/food", {title: "美食汇"});
+};
+
+//显示美食列表
+exports.statis = function (req, res) {
+    res.render("admin/statis", {title: "统计报表"});
 };

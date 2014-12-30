@@ -44,9 +44,6 @@ ep.after('topic_html', urls.length, function (topics) {
                 callback();
                 console.log(path + "保存成功");
             });
-    }, function (err, result) {
-        console.log('final:');
-        console.log(result);
     });
 });
 

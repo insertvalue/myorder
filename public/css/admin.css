@@ -1,6 +1,6 @@
 body { font-size: 14px; font-family: 'Microsoft YaHei', '微软雅黑'; padding-top: 60px; padding-bottom: 40px; }
 .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container { width: 1200px; }
-
+a{cursor: pointer}
 table .hd-row td {
     text-align: left;
     font-size: 12px;

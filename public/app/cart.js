@@ -80,7 +80,7 @@
     $("#cart_zongjia").text(get_total());
   });
 
-  $('.buy-btn').click(function (e) {
+  $(document).delegate('.buy-btn', 'click',function (e) {
     $('#car-confirm').reveal({
       animation: 'fadeAndPop',
       animationspeed: 300,

@@ -76,7 +76,7 @@ exports.updateOrderById = function (id, updateorder, callback) {
  * @param payStatus
  * @param callback
  */
-exports.updatePayStatus = function(id, payStatus, callback){
+exports.updatePayStatus = function (id, payStatus, callback) {
     Order.findOne({_id: id}, function (err, order) {
         order.payStatus = payStatus;
         order.save(callback);
@@ -88,9 +88,37 @@ exports.updatePayStatus = function(id, payStatus, callback){
  * @param id
  * @param callback
  */
-exports.cancelOrder = function(id, callback){
+exports.cancelOrder = function (id, callback) {
     Order.findOne({_id: id}, function (err, order) {
         order.canceled = "true";
         order.save(callback);
     });
 };
+
+/**
+ * 根据时间对订单进行分组查询
+ * @param dateType 时间类型{year,month,day}
+ * @param startTime 开始时间
+ * @param endTime 结束时间
+ * @param callback 回调函数
+ */
+exports.groupOrderByTime = function (dateType, startTime, endTime, callback) {
+    var substr_end = 0;
+    switch (dateType) {
+        case "year":
+            substr_end = 4;
+            break;
+        case "month":
+            substr_end = 7;
+            break;
+        case "day":
+            substr_end = 10;
+            break;
+    }
+    Order.aggregate(
+        {$match: {time: {"$gte": startTime, "$lte": endTime}}}
+        , {$group: {_id: {date: {$substr: ["$time", 0, 10]}}, count: {$sum: 1}}}
+        , {$project: {_id: 0, time: "$_id.date", count: "$count"}}
+        , {$sort: {time: 1}}
+        , callback)
+}

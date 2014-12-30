@@ -65,6 +65,7 @@ router.get('/admin/user/isAdmin/:id', site.auth, admin.auth_super_admin, admin.u
 router.get('/admin/user/canOperateShop/:id', site.auth, admin.auth_super_admin, admin.user_operateShop);
 //统计报表
 router.get('/admin/statis', site.auth, admin.statis);
+router.get('/admin/statis/day', site.auth, order.getOrderByDay);
 
 //404 hadle
 router.get('*', site.pageNotFound);

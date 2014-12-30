@@ -10,12 +10,13 @@ var config = require('../config').config;
 var util = require('../libs/util.js');
 var service = require('../libs/service');
 var path = require('path');
+var dateFormat = require('dateformat');
 
 // GET URL /today
 exports.today = function (req, res, next) {
     service.getToday(function (err, result) {
         if (err) {
-            res.render('today', { error: 'null'});
+            res.render('today', {error: 'null'});
         } else {
             res.render('today', result);
         }
@@ -195,4 +196,15 @@ exports.submit_pay = function (req, res) {
             }
         });
     }
-}
+};
+
+//每日订单统计
+exports.getOrderByDay = function (req, res) {
+    var now = new Date();
+    var endTime = dateFormat(now, "yyyy-mm-dd 23:59:59")
+    now.setDate(now.getDate() - 7);
+    var startTime = dateFormat(now, "yyyy-mm-dd 00:00:00")
+    Order.groupOrderByTime("day", startTime, endTime, function (err, docs) {
+        res.send(docs);
+    })
+};

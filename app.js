@@ -46,7 +46,6 @@ app.use(function (req, res, next) {
     var path = __dirname + '/public/upload';
     req.upload_path = path;
     if (fs.existsSync(path)) {
-        console.log('已经创建过此更新目录了');
     } else {
         fs.mkdirSync(path);
         console.log('更新目录已创建成功\n');

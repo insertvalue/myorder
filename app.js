@@ -36,7 +36,7 @@ app.use(function (req, res, next) {
 });
 
 // uncomment after placing your favicon in /public
-app.use(favicon(__dirname + '/public/img/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

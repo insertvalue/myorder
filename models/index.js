@@ -12,8 +12,8 @@ mongoose.connect(config.db, function (err) {
 });
 
 // models
-require('./user');
 require('./shop');
+require('./user');
 require('./food');
 require('./order');
 require('./balance');

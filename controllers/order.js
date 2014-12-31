@@ -42,7 +42,7 @@ exports.shop = function (req, res, next) {
                                 //不存在这个分类，需要创建这个数组
                                 group[index[0]] = {'name': index[1], 'foods': []}
                             }
-
+                            foods[i].path = config.img_server + foods[i].path.replace("/upload", "");
                             //向该分类推入这个商品
                             group[index[0]].foods.push(foods[i]);
 

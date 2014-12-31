@@ -25,7 +25,8 @@ var config = {
             pass: "*******"
         }
     },
-    upload_path: "D:/node_upload"
+    upload_path: "D:/node_upload",
+    img_server: "http://172.16.22.19:8000"
 }
 
 exports.config = config;

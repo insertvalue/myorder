@@ -331,7 +331,7 @@ exports.user_forgetPassword = function (req, res) {
                             //如果邮箱存在，则发送密码
                             util.sendMail({
                                 to: req.body.email,
-                                subject: '宏电订餐系统新密码',
+                                subject: '宏电订餐系-密码找回',
                                 text: '你的新密码是：' + randPwd + '，请用此密码登陆后尽快修改密码'
                             }, function (err) {
                                 if (err) return res.redirect('/user/forgetPassword?tip=sendfail');

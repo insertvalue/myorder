@@ -18,15 +18,17 @@ var config = {
     time_zone: 8,//时区，不般不用改
     admin_user_email: process.env.ADMIN_USER_EMAIL || 'admin@admin.com',//默认超级管理员的邮箱地址
     nodeMailer: {
-        service: "Gmail",
-        from: "admin@gmail.com",
+        host: "smtp.126.com",
+        service: "126",
+        from: "node_test_mail@126.com",
         auth: {
-            user: "admin@gmail.com",
-            pass: "*******"
+            user: "node_test_mail@126.com",
+            pass: "admin123"
         }
     },
     upload_path: "D:/node_upload",
-    img_server: "http://172.16.22.19:8000"
+    img_server: "http://172.16.22.19:8000",
+    email_templ_pwd: ""
 }
 
 exports.config = config;
